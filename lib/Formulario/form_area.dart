@@ -1,6 +1,5 @@
 library minha_biblioteca_flutter;
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class FormArea extends StatelessWidget {
@@ -21,7 +20,7 @@ class FormArea extends StatelessWidget {
   }
 
   FormArea(
-    this.label, {
+    this.label, {super.key,
     this.dica,
     this.password = false,
     this.controlador,
@@ -29,9 +28,7 @@ class FormArea extends StatelessWidget {
     this.tipo = TextInputType.text,
     this.editavel = true,
   }) {
-    if (this.validator == null) {
-      this.validator = validarEntrada;
-    }
+    validator ??= validarEntrada;
   }
 
   @override
@@ -44,7 +41,7 @@ class FormArea extends StatelessWidget {
       enabled: editavel,
       style: const TextStyle(fontSize: 20),
       decoration: InputDecoration(
-        labelText: this.label,
+        labelText: label,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
         hintText: dica,
       ),
